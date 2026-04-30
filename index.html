@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cynthia Sosa Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--beige:#f6f2ec;
+--emerald:#1c6b5a;
+--dark:#111;
+}
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--beige);
+color:#222;
+scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav a{
+margin:0 15px;
+text-decoration:none;
+color:var(--emerald);
+font-weight:500;
+cursor:pointer;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+background:url('https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568604/WhatsApp_Image_2026-04-29_at_1.28.22_PM_r96ggy.jpg') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;height:100%;
+background:rgba(0,0,0,0.4);
+}
+
+.hero h1{
+position:relative;
+color:white;
+font-size:4rem;
+font-family:'Playfair Display';
+letter-spacing:4px;
+}
+
+/* SECTIONS */
+.section{
+max-width:1200px;
+margin:auto;
+padding:120px 40px;
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+}
+
+.section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* BIO */
+#bio{
+max-width:800px;
+line-height:2;
+font-size:1.1rem;
+}
+
+/* PROJECTS */
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:50px;
+}
+
+.project{
+position:relative;
+overflow:hidden;
+cursor:pointer;
+}
+
+.project img{
+width:100%;
+height:450px;
+object-fit:cover;
+transition:1s;
+}
+
+.project:hover img{
+transform:scale(1.08);
+filter:brightness(0.7);
+}
+
+.project span{
+position:absolute;
+bottom:30px;
+left:30px;
+color:white;
+font-size:1.6rem;
+font-family:'Playfair Display';
+}
+
+/* LIGHTBOX */
+.lightbox{
+position:fixed;
+top:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.95);
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:999;
+}
+
+.slide img, .slide video{
+max-width:85%;
+max-height:80vh;
+object-fit:contain;
+background:black;
+}
+
+.arrow{
+position:absolute;
+top:50%;
+font-size:3rem;
+color:white;
+cursor:pointer;
+padding:20px;
+}
+
+.left{left:20px;}
+.right{right:20px;}
+
+.close{
+position:absolute;
+top:20px;
+right:30px;
+color:white;
+font-size:2rem;
+cursor:pointer;
+}
+
+/* FLOAT BUTTONS */
+.float{
+position:fixed;
+right:20px;
+bottom:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.btn-float{
+width:55px;height:55px;
+border-radius:50%;
+background:var(--emerald);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* SOCIAL */
+.socials{
+display:flex;
+gap:25px;
+margin-top:20px;
+}
+
+.socials svg{
+width:28px;
+fill:var(--emerald);
+cursor:pointer;
+}
+
+/* BUTTON */
+.btn{
+background:var(--emerald);
+color:white;
+padding:12px 20px;
+border:none;
+cursor:pointer;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+<div><b>Cynthia Sosa</b></div>
+<div>
+<a onclick="goTop()">Inicio</a>
+<a onclick="goSection('about')">Sobre mí</a>
+<a onclick="goSection('projects')">Proyectos</a>
+<a onclick="goSection('contact')">Contacto</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<h1>Cynthia Sosa</h1>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+<p id="bio"></p>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+<h2>Proyectos</h2>
+
+<div class="projects">
+<div class="project" onclick="openGallery('luna')">
+<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568630/WhatsApp_Image_2026-04-29_at_1.33.45_PM_xsmjmk.jpg">
+<span>Luna y Copa</span>
+</div>
+
+<div class="project" onclick="openGallery('herrera')">
+<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568643/WhatsApp_Image_2026-04-30_at_10.23.58_AM_ibqpbv.jpg">
+<span>Herrera</span>
+</div>
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+<h2>Contacto</h2>
+
+<p>Email: sosavcynthia101@gmail.com</p>
+
+<div class="socials">
+<a href="https://www.facebook.com/profile.php?id=61580281299588" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 0 12 22v-7h-2v-3h2v-2c0-2 1-3 3-3h2v3h-2c-.5 0-1 .5-1 1v1h3l-1 3h-2v7"/></svg>
+</a>
+
+<a href="https://www.instagram.com/cyn.gsv2" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
+</a>
+</div>
+
+<button class="btn" onclick="window.open('https://open.spotify.com/playlist/2WYoQI9nzxve2tk9bMTOtm')">
+Spotify Playlist
+</button>
+</section>
+
+<!-- FLOAT -->
+<div class="float">
+<div class="btn-float" onclick="sendMail()">✉</div>
+<div class="btn-float" onclick="goTop()">⌂</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+<span class="close" onclick="closeGallery()">✕</span>
+<span class="arrow left" onclick="changeSlide(-1)">‹</span>
+<span class="arrow right" onclick="changeSlide(1)">›</span>
+<div id="slideContainer"></div>
+</div>
+
+<script>
+
+/* BIO EXACTA */
+document.getElementById("bio").innerText = "Mi nombre es Cynthia Guadalupe Sosa Villalvazo. Nací el 28 de mayo de 2001 en la ciudad de Chihuahua, Chihuahua, por lo que actualmente tengo 24 increíbles años. Soy estudiante del último año de la carrera de Arquitectura y me apasionan las remodelaciones. Me encanta dar nueva vida a los espacios, transformarlos y devolverles su esencia. Actualmente estoy desarrollando nuevas habilidades en el ámbito laboral; cuento con alrededor de 5 empleos que me han permitido crecer profesionalmente y generar nuevas relaciones. Amo viajar y conocer en persona aquellos lugares que antes solo veía en redes sociales. La adrenalina es una emoción que disfruto constantemente. Me esfuerzo por cumplir todo lo que me propongo, incluso cuando parece imposible, porque como bien dice Monseñor Adames: 'No existen cosas imposibles, sino hombres incapaces'. Puedo ser dispersa o indisciplinada en ocasiones, pero incapaz nunca. Espero que esta pequeña introducción te motive a conocer algunos de mis proyectos. ¡Bienvenido a mi mundo!";
+
+/* NAV */
+function goSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function goTop(){
+document.getElementById("home").scrollIntoView({behavior:'smooth'});
+}
+
+/* SCROLL ANIM */
+window.addEventListener('scroll',()=>{
+document.querySelectorAll('.section').forEach(sec=>{
+if(sec.getBoundingClientRect().top < window.innerHeight-100){
+sec.classList.add('visible');
+}
+});
+});
+
+/* EMAIL */
+function sendMail(){
+window.location.href="mailto:sosavcynthia101@gmail.com";
+}
+
+/* GALLERY */
+let slides=[], current=0;
+
+function openGallery(type){
+if(type==="luna"){
+slides=[
+`<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568630/WhatsApp_Image_2026-04-30_at_9.46.00_AM_pgoxqz.jpg">`,
+`<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568550/WhatsApp_Image_2026-04-30_at_9.46.21_AM_io6fcb.jpg">`,
+`<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568630/WhatsApp_Image_2026-04-30_at_9.40.53_AM_zdphvo.jpg">`,
+`<video controls src="luna.mp4"></video>`
+];
+}
+
+if(type==="herrera"){
+slides=[
+`<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568643/WhatsApp_Image_2026-04-30_at_10.16.26_AM_ubp8wr.jpg">`,
+`<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568643/WhatsApp_Image_2026-04-30_at_10.18.17_AM_b0sje6.jpg">`,
+`<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568643/WhatsApp_Image_2026-04-30_at_10.01.08_AM_igtlho.jpg">`,
+`<img src="https://res.cloudinary.com/dnymlpcsx/image/upload/v1777568643/WhatsApp_Image_2026-04-30_at_10.03.02_AM_y9pcec.jpg">`,
+`<video controls src="herrera.mp4"></video>`
+];
+}
+
+current=0;
+showSlide();
+lightbox.style.display="flex";
+}
+
+function showSlide(){
+slideContainer.innerHTML = `<div class="slide">${slides[current]}</div>`;
+}
+
+function changeSlide(dir){
+current+=dir;
+if(current<0) current=slides.length-1;
+if(current>=slides.length) current=0;
+showSlide();
+}
+
+function closeGallery(){
+lightbox.style.display="none";
+}
+
+</script>
+
+</body>
+</html>
